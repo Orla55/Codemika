@@ -16,7 +16,6 @@ class User:
         self.__created = datetime.datetime.now()
         self.__update = None
         self.__last_visit = self.__created
-        # self.__user_name = self.name + " " + self.surname
         User.__users_list[self.__id] = self
 
     @property

@@ -5,14 +5,38 @@ class Item:
     __item_id = 0
     __item_list = dict()
 
-    def __init__(self, title, price) -> None:
+    def __init__(self, title, specification, price) -> None:
         Item.__item_id += 1
         self.__id = Item.__item_id
-        self.__title = title
+        self.title = title
+        self.specification = specification
         self.price = price
         self.__created = datetime.datetime.now()
         self.__update = None
         Item.__item_list[self.__id] = self
+
+    @property
+    def title(self):
+        return self.__title
+
+    @title.setter
+    def title(self, title):
+        if type(title) == str:
+            self.__title = title
+        else:
+            raise ValueError("Please be advised, that title has to be string")
+
+    @property
+    def specification(self):
+        return self.__specification
+
+    @specification.setter
+    def specification(self, specification):
+        if type(specification) == str:
+            self.__specification = specification
+        else:
+            raise ValueError(
+                "Please be advised, that specification has to be string")
 
     @property
     def price(self):
@@ -20,7 +44,7 @@ class Item:
 
     @price.setter
     def price(self, price):
-        if price < 0:
+        if type(price) != int and price < 0:
             raise ValueError("Price cannot be less than zero")
         else:
             self.__price = price
