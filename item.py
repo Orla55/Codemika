@@ -55,20 +55,3 @@ class Item:
             if item == id:
                 return Item.__item_list[item]
         raise ValueError('Item has not found')
-
-    @staticmethod
-    def get_item_by_price(price):
-        for product in Item.__item_list:
-            if product.price == price:
-                return price
-        raise ValueError('Item has not found')
-
-    @staticmethod
-    def get_item_by_tittle(tittle):
-        for item in Item.__item_list:
-            if item.tittle == tittle:
-                return item
-        raise ValueError('Item has not found')
-
-    def __str__(self):
-        return str(self.__id) + ' ' + self.__title + ' ' + str(self.price)
