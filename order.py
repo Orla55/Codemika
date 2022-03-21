@@ -49,3 +49,6 @@ class OrderList:
             self.__specification = specification
         else:
             raise ValueError("Item has not found")
+
+    def show_catalog(self):
+        print(OrderList.__oredr_list)

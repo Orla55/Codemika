@@ -13,10 +13,23 @@ class User:
         self.surname = surname
         self.phone = phone
         self.email = email
+        self.role = ""
         self.__created = datetime.datetime.now()
         self.__update = None
         self.__last_visit = self.__created
         User.__users_list[self.__id] = self
+
+    @property
+    def role(self):
+        return self.__role
+
+    @role.setter
+    def role(self, role):
+        if type(self) == User:
+            self.__role = "user"
+
+        else:
+            self.__role = "Not defined"
 
     @property
     def name(self):
@@ -69,7 +82,7 @@ class User:
             print("Invalid email")
 
     def __str__(self) -> str:
-        return str(self.__id) + " " + self.name + " " + self.surname + " " + self.phone + " " + self.__email
+        return str(self.__id) + " " + self.name + " " + self.surname + " " + self.phone + " " + self.__email + " " + self.role
 
     @staticmethod
     def get_user_by_id(id):
@@ -97,4 +110,3 @@ class User:
 
 user1 = User("Dmitry", "Kolobov", '+79052541525', "danasan@akak.ru")
 user2 = User("Alex", "Yashin", '+79052541515', "danan@akak.ru")
-print(User.get_user_by_phone('danan@akak.ru'))

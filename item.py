@@ -55,3 +55,19 @@ class Item:
             if item == id:
                 return Item.__item_list[item]
         raise ValueError('Item has not found')
+
+    def create_item_catlog(self, title, specification, price):
+        self.title = title
+        self.specification = specification
+        self.price = price
+        return Item(self.title, self.specification, self.price)
+
+    def change_item_catalog(self, title, specification, price):
+        self.title = title
+        self.specification = specification
+        self.price = price
+        Item.__update = datetime.datetime.now()
+        return Item(self.title, self.specification, self.price)
+
+    def __str__(self) -> str:
+        return str(self.__id) + " " + self.title + " " + self.specification+" "+str(self.price)
